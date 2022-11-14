@@ -18,10 +18,10 @@ export default {
     // ...mapState({
     //   ask: state => state.ask
     // })
-  },
+    },
   created() {
     this.$store.dispatch('FETCH_ASK');
-  },
+    },
 }
 </script>
 
