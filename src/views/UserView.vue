@@ -1,28 +1,32 @@
 <template>
   <div>
-    <p>name : {{ userInfo.id }}</p>
+    <user-profile :info="userInfo">
+      <slot name="username">{{ userInfo.id }}</slot>
+      <template slot="time">{{ userInfo.created }}</template>
+      <div slot="karma">{{ userInfo.karma }}</div>
+    </user-profile>
+    <!-- <p>name : {{ userInfo.id }}</p>
     <p>karma : {{ userInfo.karma }}</p>
-    <p>created : {{ userInfo.created }}</p>
+    <p>created : {{ userInfo.created }}</p> -->
   </div>
 </template>
 
 <script>
+import UserProfile from '../components/UserProfile.vue'
 // import { fetchUser } from '../api/index.js';
 
 export default {
+  components: {
+    UserProfile,
+  },
   computed: {
     userInfo() {
       return this.$store.state.user;
     }
   },
   created() {
-    console.log(this.$route.params.id);
     const userName = this.$route.params.id;
-
     this.$store.dispatch('FETCH_USER', userName);
-    // fetchUser('davideast')
-    //   .then(response => console.log(response))
-    //   .catch(error => console.log(error));
   }
 }
 </script>
