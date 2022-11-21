@@ -10,7 +10,7 @@ import {
     FETCH_NEWS(context) {
         fetchNewsList()
             .then( response => {
-                console.log(response.data);
+                //console.log(response.data);
                 context.commit('SET_NEWS', response.data);
             })
             .catch( error => {
