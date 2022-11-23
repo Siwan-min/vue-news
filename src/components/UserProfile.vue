@@ -7,17 +7,14 @@
       <slot name="username">
         <!-- 상위 컴포넌트에서 정의 할 영역 -->
       </slot>
-      <!-- <div>
-        username: {{ info.id }}
-      </div> -->
-      <!-- <router-link :to="`/user/${userInfo.id}`">
-        {{ userInfo.id }}
-      </router-link> -->
       <div class="time">
-        <slot name="time"></slot>
-        <!-- time: {{ info.created }} -->
+        <slot name="time">
+          <!-- 상위 컴포넌트에서 정의 할 영역 -->
+        </slot>
       </div>
-      <slot name="karma"></slot>
+      <slot name="karma">
+        <!-- 상위 컴포넌트에서 정의 할 영역 -->
+      </slot>
     </div>
   </div>
 </template>
