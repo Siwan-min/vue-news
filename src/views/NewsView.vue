@@ -12,9 +12,7 @@ export default {
   components: { ListItem },
   created() {
     bus.$emit('start:spinner');
-
-    setTimeout(() => {
-      this.$store.dispatch('FETCH_NEWS')
+    this.$store.dispatch('FETCH_NEWS')
                   .then(() => {
                     console.log('fetched');
                     bus.$emit('end:spinner');
@@ -22,8 +20,10 @@ export default {
                   .catch((error) => {
                     console.log(error);
                   });
-      bus.$emit('end:spinner');
-    }, 3000);
+    bus.$emit('end:spinner');
+    // setTimeout(() => {
+      
+    // }, 3000);
   }
 }
 
