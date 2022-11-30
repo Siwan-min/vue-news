@@ -5,6 +5,8 @@ import AskView from '../views/AskView.vue';
 import JobsView from '../views/JobsView.vue';
 import UserView from '../views/UserView.vue';
 import ItemView from '../views/ItemView.vue';
+import bus from '../utils/bus.js';
+import { store } from '../store/index.js';
 // import createListView from '../views/CreateListView.js';
 
 Vue.use(VueRouter);
@@ -21,17 +23,41 @@ export const router = new VueRouter({
       name: 'news',
       component: NewsView,
       // component: createListView('NewsView'),
+      beforeEnter: (to, from, next) => {
+        bus.$emit('start:spinner');
+        store.dispatch('FETCH_LIST', to.name)
+        .then(() => next())
+        .catch((error) => {
+          console.log(error);
+        });
+      },
     },
     {
       path: '/ask',
       name: 'ask',
       component: AskView,
+      beforeEnter: (to, from, next) => {
+        bus.$emit('start:spinner');
+        store.dispatch('FETCH_LIST', to.name)
+        .then(() => next())
+        .catch((error) => {
+          console.log(error);
+        });
+      },
       //component: createListView('AskView'),
     },
     {
       path: '/jobs',
       name: 'jobs',
       component: JobsView,
+      beforeEnter: (to, from, next) => {
+        bus.$emit('start:spinner');
+        store.dispatch('FETCH_LIST', to.name)
+        .then(() => next())
+        .catch((error) => {
+          console.log(error);
+        });
+      },
       //component: createListView('JobsView'),
     },
     {

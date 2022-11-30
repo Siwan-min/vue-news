@@ -11,7 +11,11 @@
 
   export default {
     components: { ListItem },
-    mixins: [ListMixin],
+    // mounted() {
+    //   bus.$emit('end:spinner');
+    // },
+    mixins:[ListMixin],
+    // mixins: [ListMixin],
     // created() {
       
     //   bus.$emit('start:spinner');
